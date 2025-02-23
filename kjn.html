@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability Starts with Us: A Call for Environmental Action</title>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background-color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            background-size: cover; /* Ensures background image covers the button */
+            background-position: center; /* Center the background image */
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        /* Active State for the Menu Button */
+        nav ul li a.active {
+            background-color: rgba(0, 128, 0, 0.7); /* Highlight color */
+            color: #FFD700; /* Gold color for text */
+        }
+
+        /* Section General Styles */
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            margin: 50px 20px;
+            border-radius: 8px;
+            opacity: 0;
+            display: none;
+            animation: fadeIn 1s forwards;
+        }
+
+        /* Home Section */
+        #home {
+            background-image: url('menu.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+        }
+
+        /* About Pollution Section */
+        #about {
+            background-image: url('ocean.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Tips Section */
+        #tips {
+            background-image: url('tips.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-image: url('sea.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Text Styling */
+        h2, h3 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        /* Button Styles */
+        .contact-button {
+            background-color: #4CAF50;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .contact-button:hover {
+            background-color: #45a049;
+        }
+
+        .contact-box {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+        }
+
+        /* Animation for Section Transitions */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Typing Effect for Title */
+        #home-title {
+            font-size: 2.5em; /* Reduced font size */
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid #fff;
+            width: 0;
+            animation: typing 3s steps(40) 1s forwards, colorChange 5s infinite alternate;
+        }
+
+        /* Typing Animation */
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Color Change Animation for Title */
+        @keyframes colorChange {
+            0% {
+                color: #fff;
+            }
+            25% {
+                color: #FF6347; /* Tomato */
+            }
+            50% {
+                color: #FFD700; /* Gold */
+            }
+            75% {
+                color: #32CD32; /* Lime Green */
+            }
+            100% {
+                color: #FF69B4; /* Hot Pink */
+            }
+        }
+
+    </style>
+    <script>
+        // Function to show and hide sections
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.section');
+            var navLinks = document.querySelectorAll('nav ul li a');
+            
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+                section.style.opacity = 0;
+            });
+
+            // Remove active class from all menu buttons
+            navLinks.forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            // Show selected section
+            var selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block';
+            setTimeout(function() {
+                selectedSection.style.opacity = 1;
+            }, 200);
+
+            // Add active class to the clicked menu button
+            var activeLink = document.querySelector('nav ul li a[href="#' + sectionId + '"]');
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        // Scroll to the section smoothly
+        document.querySelectorAll('nav ul li a').forEach(function(navLink) {
+            navLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                var targetId = this.getAttribute('href').substring(1);
+                showSection(targetId);
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#home" onclick="showSection('home')" style="background-image: url('menu.jpg');">Home</a></li>
+            <li><a href="#about" onclick="showSection('about')" style="background-image: url('ocean.jpg');">About Pollution</a></li>
+            <li><a href="#tips" onclick="showSection('tips')" style="background-image: url('tips.jpg');">Tips</a></li>
+            <li><a href="#contact" onclick="showSection('contact')" style="background-image: url('sea.jpg');">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <div id="home" class="section" style="display:block;">
+        <h2 id="home-title">Sustainability Starts with Us: A Call for Environmental Action</h2>
+        <p>Our environment is a vital part of our survival. We depend on clean air, water, and fertile land to live, and all of these resources are at risk from human activities. The importance of protecting the environment cannot be overstated.</p>
+        <p>Environmental Awareness refers to the understanding and recognition of the importance of preserving and protecting the natural environment. It involves being conscious of the impact human activities have on ecosystems, resources, and biodiversity.</p>
+         <p>Promoting environmental awareness encourages individuals and organizations to adopt sustainable practices, reduce waste, conserve energy, and support initiatives that minimize ecological footprints, ultimately contributing to a healthier planet for future generations.</p>
+        <p>By preserving our environment, we ensure a better future for ourselves and generations to come.</p>
+    </div>
+
+    <!-- About Pollution Section -->
+    <div id="about" class="section" style="display:none;">
+        <h2>About Pollution</h2>
+        <p>Pollution is the introduction of harmful materials into the environment. These pollutants damage ecosystems, human health, and the planet. There are various types of pollution that need attention:</p>
+        <div class="contact-box">
+            <h3>Air Pollution</h3>
+            <p>Harmful gases and particles released into the atmosphere often from industrial processes and vehicles. This causes respiratory issues and contributes to global warming.</p>
+        </div>
+        <div class="contact-box">
+            <h3>Water Pollution</h3>
+            <p>The contamination of water bodies like rivers and oceans due to chemicals, sewage, and plastic waste. It harms aquatic life and disrupts the food chain.</p>
+        </div>
+        <div class="contact-box">
+            <h3>Soil Pollution</h3>
+            <p>The introduction of harmful chemicals into the soil, making it difficult for plants to grow and impacting agricultural productivity.</p>
+        </div>
+        <div class="contact-box">
+            <h3>Noise Pollution</h3>
+            <p>High levels of noise from vehicles, factories, and construction sites disrupt wildlife and cause stress in humans.</p>
+        </div>
+    </div>
+
+    <!-- Tips Section -->
+    <div id="tips" class="section" style="display:none;">
+        <h2>Environmental Tips</h2>
+        <div class="contact-box">
+            <p>1. Reduce, reuse, and recycle materials.</p>
+        </div>
+        <div class="contact-box">
+            <p>2. Switch off lights and appliances when not in use to save energy.</p>
+        </div>
+        <div class="contact-box">
+            <p>3. Use reusable bags and containers to minimize plastic waste.</p>
+        </div>
+        <div class="contact-box">
+            <p>4. Plant trees to help absorb CO2 and improve air quality.</p>
+        </div>
+        <div class="contact-box">
+            <p>5. Avoid using harmful chemicals and pesticides that pollute the environment.</p>
+        </div>
+    </div>
+<style>
+        /* Basic Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            background-color: #333;
+        }
+
+        .content-wrapper {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .team-member {
+            text-align: center;
+            width: 200px;
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%; /* Oval Shape */
+            border: 3px solid #fff;
+        }
+
+        .team-member p {
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contact Section (ONLY HERE) -->
+    <div id="contact" class="section" style="display:none;">
+        <h2>CONTACT US</h2>
+        <p>This website is created by Group 1 students from Grade 12 STEM-Mt. Duval.</p>
+        <div class="team">
+            <div class="team-member">
+                <img src="vine.jpg" alt="Divine Merry Alinghawa">
+                <p>Divine Merry Alinghawa</p>
+                <p>Email: alinghawad@gmail.com</p>
+            </div>
+            <div class="team-member">
+                <img src="kolin.jpg" alt="Khollen Kay Enriquez">
+                <p>Khollen Kay Enriquez</p>
+                <p>Email: khollen@gmail.com</p>
+            </div>
+            <div class="team-member">
+                <img src="trixcie.jpg" alt="Trixcie Anne Mabini">
+                <p>Trixcie Anne Mabini</p>
+                <p>Email: trixciemabini@gmail.com</p>
+            </div>
+            <div class="team-member">
+                <img src="lance.jpg" alt="Lance Marl Manto">
+                <p><b>Lance Marl Manto</b></p>
+                <p><b>Email: lance@gmail.com</b></p>
+            </div>
+            <div class="team-member">
+                <img src="ayessa.jpg" alt="Ayessa Loren Dagooc">
+                <p>Ayessa Loren Dagooc</p>
+                <p>Email: ayessa@gmail.com</p>
+            </div>
+            <div class="team-member">
+                <img src="emari.jpg" alt="Emari Jane Pepito">
+                <p>Emari Jane Pepito</p>
+                <p>Email: emari@gmail.com</p>
+            </div>
+            <div class="team-member">
+                <img src="patrick.jpg" alt="Patrick John Muana">
+                <p>Patrick John Muana</p>
+                <p>Email: patrick@gmail.com</p>
+            </div>
+
+
+
+            <div class="team-member">
+                <img src="trrhena.jpg" alt="Rhena Mae Montes">
+                <p>Ms. Rhena Mae C. Montes</p>
+                <p>Empowerment Technology Instructor</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
